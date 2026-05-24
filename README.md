@@ -1,6 +1,6 @@
 # Jagstream - a Scalable video streams app that can handle thousands of concurrent users with low latency
 
-![Jagstream System Design Architecture](jagstream_sysdesign.jpg)
+![Jagstream System Design Architecture](./jagstream_sysdesign.jpg)
 
 Welcome to the Jagstream repository. This document provides an in-depth architectural overview of our production-grade Video-on-Demand (VoD) streaming platform built on AWS, as illustrated in the architecture diagram above.
 
