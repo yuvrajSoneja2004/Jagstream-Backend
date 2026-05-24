@@ -1,0 +1,56 @@
+# Node.js specific
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# TypeScript specific
+dist/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.*.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Optional npm cache directory
+.npm
+
+# MacOS folder attributes
+.DS_Store
+
+# Backup files
+*.bak
+*.swp
+
+# Coverage directory
+coverage/
+
+# Debug output
+debug.log
+
+
+# HLS files
+# temp
+# tempHLS
+# tempThumbnails
+# uploads

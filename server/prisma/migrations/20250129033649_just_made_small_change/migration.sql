@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "VideoComment" ALTER COLUMN "createdAt" SET DEFAULT CURRENT_TIMESTAMP;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Upload Test</title>
+</head>
+<body>
+    <h2>Video Upload Test</h2>
+    <form id="uploadForm">
+        <input type="file" id="videoFile" accept="video/*" />
+        <button type="submit">Upload Video</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            const fileInput = document.getElementById('videoFile');
+            formData.append("title" , 'meri bebesi')
+            formData.append('video', fileInput.files[0]);
+
+            try {
+                const response = await fetch('http://localhost:3000/api/v1/video/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    `Upload successful! URL: <a href="${data.url}" target="_blank">${data.url}</a>`;
+            } catch (error) {
+                document.getElementById('result').innerHTML = 'Upload failed: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>

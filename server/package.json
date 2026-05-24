@@ -1,0 +1,76 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "nodemon index.ts"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "routes",
+      "middleware",
+      "controllers",
+      "helpers"
+    ],
+    "ignore": [
+      "tempHLS/*"
+    ],
+    "ext": "ts,js,json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/cors": "^2.8.17",
+    "@types/helmet": "^4.0.0",
+    "@types/ioredis": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.7.4",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.7",
+    "prisma": "^5.21.1",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.664.0",
+    "@aws-sdk/types": "^3.664.0",
+    "@azure/storage-blob": "^12.28.0",
+    "@filebase/sdk": "^1.0.6",
+    "@prisma/client": "^5.21.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.0",
+    "@types/fluent-ffmpeg": "^2.1.26",
+    "@types/mime-types": "^2.1.4",
+    "@types/multer": "^1.4.12",
+    "@types/uuid": "^10.0.0",
+    "aws-sdk": "^2.1691.0",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "bull": "^4.16.5",
+    "bullmq": "^5.58.7",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "helmet": "^8.0.0",
+    "ioredis": "^5.4.1",
+    "mime-types": "^2.1.35",
+    "mkdirp": "^3.0.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.10",
+    "pocketbase": "^0.21.5",
+    "react-intersection-observer": "^9.13.1",
+    "rimraf": "^6.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "util": "^0.12.5",
+    "uuid": "^10.0.0",
+    "video-thumbnail-generator": "^1.1.3",
+    "zod": "^3.23.8"
+  }
+}

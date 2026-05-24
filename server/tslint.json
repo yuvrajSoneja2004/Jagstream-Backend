@@ -1,0 +1,45 @@
+{
+    "extends": [
+      "tslint:recommended",
+      "tslint-react",
+      "tslint-config-prettier",
+      "tslint-plugin-blank-line",
+      "tslint-sonarts"
+    ],
+    "rules": {
+      "variable-name": [true, "allow-leading-underscore", "allow-pascal-case"],
+      "max-line-length": [true, 200],
+      "ordered-imports": [false],
+      "object-literal-sort-keys": false,
+      "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
+      "arrow-parens": false,
+      "only-arrow-functions": [false],
+      "no-console": [true],
+      "blank-line": [true, "ignore-imports"],
+      "prefer-const": false,
+      "semicolon": [true, "always", "ignore-bound-class-methods"],
+      "object-literal-shorthand": false,
+      "array-type": false,
+      "class-name": true,
+      "whitespace": [
+        true,
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-module",
+        "check-separator",
+        "check-rest-spread",
+        "check-type",
+        "check-typecast",
+        "check-type-operator",
+        "check-preblock"
+      ],
+      "jsx-no-bind": true,
+      "jsx-no-lambda": true,
+      "jsx-boolean-value": false
+    },
+    "linterOptions": {
+      "exclude": ["src/shared/api/api.tsx", "src/shared/api/api_cmdb.tsx"]
+    }
+  }
+  

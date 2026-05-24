@@ -1,0 +1,51 @@
+export const videoCategories = [
+  "Cars and vehicles",
+  "Comedy",
+  "Education",
+  "Entertainment",
+  "Film and animation",
+  "Gaming",
+  "How-to and style",
+  "Music",
+  "News and politics",
+  "Non-profits and activism",
+  "People and blogs",
+];
+
+export const defaultTagsForCategories: { [key: string]: string[] } = {
+  "Cars and vehicles": ["cars", "vehicles", "automotive", "racing", "trucks"],
+  Comedy: ["funny", "comedy", "jokes", "stand-up", "humor"],
+  Education: ["learning", "tutorial", "education", "school", "knowledge"],
+  Entertainment: [
+    "entertainment",
+    "celebrity",
+    "movies",
+    "tv shows",
+    "pop culture",
+  ],
+  "Film and animation": ["movies", "animation", "film-making", "cinema", "CGI"],
+  Gaming: ["gaming", "video games", "esports", "streaming", "gameplay"],
+  "How-to and style": ["DIY", "tutorial", "how-to", "fashion", "lifestyle"],
+  Music: ["music", "songs", "artists", "concerts", "albums"],
+  "News and politics": [
+    "news",
+    "politics",
+    "current events",
+    "world news",
+    "elections",
+  ],
+  "Non-profits and activism": [
+    "charity",
+    "activism",
+    "social justice",
+    "non-profit",
+    "fundraising",
+  ],
+  "People and blogs": [
+    "vlogs",
+    "personal stories",
+    "lifestyle",
+    "daily life",
+    "blogging",
+  ],
+};

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Video" ALTER COLUMN "bitrates" SET DEFAULT ARRAY[360, 480, 720]::INTEGER[];

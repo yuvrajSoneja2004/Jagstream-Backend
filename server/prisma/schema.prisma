@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId      String      @id @default(uuid())
+  name        String
+  email       String
+  hasChannel  Boolean     @default(false)
+  createdAt   DateTime    @map("created_at")
+  avatarUrl   String
+  likes       VideoLike[]
+  dislikes    VideoDislike[]
+  comments    VideoComment[]
+  channels    Channel[]
+  posts       CommunityPost[]
+  searchHistory SearchHistory[]
+  watchedVideosDurations Json  @default("{}")
+  watchHistory UserWatchHistory[]
+  watchLater  UserWatchLater[]
+  userComments CommentLike[]
+  commentReplies  CommentReply[]
+  stories      UserStories[]
+}
+
+model UserWatchHistory {
+  id         Int      @id @default(autoincrement())
+  userId     String
+  videoId    String     
+  watchedAt  DateTime
+  user       User     @relation(fields: [userId], references: [userId])
+  video      Video    @relation(fields: [videoId], references: [videoUrl])
+}
+
+model UserWatchLater {
+  id         Int      @id @default(autoincrement())
+  userId     String
+  videoId    String     
+  watchedAt  DateTime
+  user       User     @relation(fields: [userId], references: [userId])
+  video      Video    @relation(fields: [videoId], references: [videoUrl])
+}
+
+model Video {
+  videoId       Int           @id @default(autoincrement())
+  title         String
+  type          String
+  description   String
+  thumbnailUrl  String
+  previewGif    String 
+  category      String        @default("all") 
+  videoUrl      String        @unique
+  views         Int           @default(0)
+  tags          String[]      @db.Text @default([])
+  createdAt     DateTime      @default(now())
+  uploadedBy    Int         
+  channel       Channel       @relation(fields: [uploadedBy], references: [id]) // Changed relation to Channel instead of User
+  bitrates      Int[]         @default([360,480,720])
+  likes         VideoLike[]
+  dislikes      VideoDislike[]
+  comments      VideoComment[]
+  userWatchHistory UserWatchHistory[]
+  userWatchLater UserWatchLater[]
+}
+
+model VideoLike {
+  id       Int    @id @default(autoincrement())
+  videoId  Int
+  userId   String // Updated to String
+  video    Video  @relation(fields: [videoId], references: [videoId])
+  user     User   @relation(fields: [userId], references: [userId])
+  likedAt  DateTime @default(now())
+}
+
+model VideoDislike {
+  id       Int    @id @default(autoincrement())
+  videoId  Int
+  userId   String // Updated to String
+  video    Video  @relation(fields: [videoId], references: [videoId])
+  user     User   @relation(fields: [userId], references: [userId])
+}
+
+model CommentLike {
+  id       Int    @id @default(autoincrement())
+  videoUrl  String
+  userId   String // Updated to String
+  commentId Int
+  comment    VideoComment  @relation(fields: [commentId], references: [id])
+  user     User   @relation(fields: [userId], references: [userId])
+}
+
+model VideoComment {
+  id          Int      @id @default(autoincrement())
+  videoUrl     String  @default("This is VideoComment default ID")
+  userId      String   
+  commentText String
+  likes       CommentLike[] 
+  createdAt   DateTime @default(now())
+  video       Video    @relation(fields: [videoUrl], references: [videoUrl])
+  user        User     @relation(fields: [userId], references: [userId])
+  replies    CommentReply[]
+}
+
+model CommentReply {
+    id          Int      @id @default(autoincrement())
+    userId      String
+    user        User     @relation(fields: [userId], references: [userId])
+    replyText   String   
+    commentId   Int
+    createdAt   DateTime @default(now())
+    replyTo     VideoComment   @relation(fields: [commentId] , references: [id])
+}
+
+model Channel {
+  id           Int      @id @default(autoincrement())
+  name         String
+  isVerified   Boolean  @default(false)
+  avatarUrl    String
+  bannerUrl    String   @default("https://placehold.co/1361x220/000000/000")
+  subscribers  String[]
+  description  String?   @map("description")
+  createdAt    DateTime  @map("created_at")
+  createdBy    String    
+  user         User      @relation(fields: [createdBy], references: [userId])
+  videos       Video[]  
+  about        ChannelAbout?
+}
+
+model ChannelAbout {
+  id          Int      @id @default(autoincrement())
+  channelId   Int      @unique 
+  description String
+  links       Json
+  createdAt   DateTime
+  channel     Channel  @relation(fields: [channelId], references: [id])
+}
+
+model CommunityPost {
+  id         Int      @id @default(autoincrement())
+  postedBy   String    // Updated to String
+  title      String
+  pictureUrl String
+  createdAt  DateTime
+  user       User     @relation(fields: [postedBy], references: [userId])
+}
+
+model UserStories {
+  id         Int      @id @default(autoincrement())
+  postedBy   String   
+  title      String 
+  pictureUrl String
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [postedBy], references: [userId])
+}
+
+model SearchSuggestions {
+  id         Int      @id @default(autoincrement())
+  query      String
+  priority   Int      @default(0)
+}
+
+model SearchHistory {
+  id         Int      @id @default(autoincrement())
+  query      String
+  createdAt  DateTime @default(now())
+  userId     String
+  user       User     @relation(fields: [userId], references: [userId])
+}
