@@ -106,4 +106,4 @@ Here is a detailed explanation of each component from the architecture diagram, 
 *   **Why not just local log files?** In a distributed system with dozens of ephemeral, auto-scaling EC2 instances, local log files are permanently deleted when the instance spins down. Centralized observability is mandatory for diagnosing issues in a production system.
 
 ---
-*Architecture designed by the Jagstream Engineering Team.*
+*Architecture designed by the Yuvraj Soneja.*
